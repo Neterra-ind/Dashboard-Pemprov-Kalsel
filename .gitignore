@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-artifact
+dist-ssr
+*.local
+
+# Sumber data/aset mentah (sudah diproses/di-copy ke src/data & src/assets)
+*.xlsx
+H. Muhidin.jpeg
+Hasnuryadi Sulaiman.jpeg
+Logo Kalsel.jpg
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

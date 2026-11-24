@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+/* Nonaktifkan dark mode otomatis (mengikuti preferensi OS) — dashboard ini
+   selalu tampil terang/putih terlepas dari pengaturan sistem pengguna. */
+@custom-variant dark (&:is(.dark, .dark *));
+
+/* ============================================================================
+   NETTERRA DASHBOARD DESIGN SYSTEM — DESIGN TOKENS
+   ----------------------------------------------------------------------------
+   Satu bahasa visual untuk seluruh dashboard klien Netterra. Yang berubah antar
+   klien HANYA Primary Color; seluruh skala & token turunan di bawah ini dihasil-
+   kan darinya. Layout, spacing, tipografi, radius, dan bayangan selalu tetap.
+
+   PRIMARY (klien saat ini — Pemprov Kalimantan Selatan): #07324F (navy)
+   Semua nilai memenuhi target kontras WCAG AA, menghindari hitam/putih murni
+   dan warna yang terlalu jenuh.
+   ============================================================================ */
+
+@theme {
+  /* ---------------------------------------------------------------- PRIMARY */
+  --color-primary-50: #e9f1f7;
+  --color-primary-100: #c8dcec;
+  --color-primary-200: #9bbdd7;
+  --color-primary-300: #6698bc;
+  --color-primary-400: #35719b;
+  --color-primary-500: #07324f; /* BASE — Primary Color */
+  --color-primary-600: #062a43;
+  --color-primary-700: #052237;
+  --color-primary-800: #041a2b;
+  --color-primary-900: #03121e;
+
+  /* --- Primary alias semantik (warna DOMINAN, dipakai lintas komponen) --- */
+  --color-primary: var(--color-primary-500);
+  --color-primary-strong: var(--color-primary-700);
+  --color-primary-soft: var(--color-primary-50);
+  --color-primary-fg: #ffffff;
+
+  /* -------------------------------------------------------------- ACCENT
+     Accent = #FF4900. BUKAN Primary. Dipakai HEMAT (~10–15% antarmuka) hanya
+     untuk penekanan: tombol CTA/ekspor, indikator aktif, state terpilih, tab
+     aktif, KPI penting, progress, notification dot, elemen interaktif. Skala
+     dibuat harmonis dengan Primary namun tetap menonjol. Bila Primary berganti,
+     kecerahan/saturasi accent disetel ulang agar tetap harmonis, dengan #FF4900
+     sebagai acuan visual. */
+  --color-accent-50: #fff2ec;
+  --color-accent-100: #ffe0d2;
+  --color-accent-200: #ffc1a5;
+  --color-accent-300: #ff9b70;
+  --color-accent-400: #ff6f38;
+  --color-accent-500: #ff4900; /* BASE — Accent Color */
+  --color-accent-600: #e63f00;
+  --color-accent-700: #bd3300;
+  --color-accent-800: #952800;
+  --color-accent-900: #7a2207;
+
+  --color-accent: var(--color-accent-500);
+  --color-accent-hover: var(--color-accent-600); /* Accent Hover */
+  --color-accent-pressed: var(--color-accent-700); /* Accent Pressed */
+  --color-accent-soft: var(--color-accent-50); /* Accent Soft Background */
+  --color-accent-bg: var(--color-accent-50); /* Accent Background */
+  --color-accent-border: var(--color-accent-200); /* Accent Border */
+  --color-accent-text: var(--color-accent-700); /* Accent Text (AA di terang) */
+  --color-accent-fg: #ffffff; /* Teks di atas accent */
+
+  /* Alias merek lama → menunjuk Primary agar kode lama ikut otomatis. */
+  --color-brand-red: var(--color-primary-500);
+  --color-brand-blue: var(--color-primary-500);
+  --color-brand-gold: var(--color-gold);
+
+  /* ------------------------------------------------------------- SEMANTIC */
+  /* Warna aksi/status yang harmonis dengan navy, tidak saling bentrok. */
+  --color-success: #0e7c57;
+  --color-success-soft: #e6f5ee;
+  --color-success-text: #0a5f43;
+
+  --color-warning: #b45309;
+  --color-warning-soft: #fbf1e0;
+  --color-warning-text: #8a4708;
+
+  --color-danger: #d93a34;
+  --color-danger-soft: #fbeaea;
+  --color-danger-text: #a62b22;
+
+  --color-info: #1c7ed6;
+  --color-info-soft: #e7f1fb;
+  --color-info-text: #155ea6;
+
+  /* Alias sentimen (FIXED): positif→success, negatif→danger, netral→abu. */
+  --color-positive: var(--color-success);
+  --color-positive-soft: var(--color-success-soft);
+  --color-negative: var(--color-danger);
+  --color-negative-soft: var(--color-danger-soft);
+  --color-neutral: #94a3b8;
+  --color-neutral-soft: #eef3f8;
+  --color-gold: var(--color-warning);
+  --color-gold-soft: var(--color-warning-soft);
+
+  /* ----------------------------------------------------------- BACKGROUND */
+  --color-canvas: #f4f7fa; /* App Background */
+  --color-section: #eef3f8; /* Section Background */
+  --color-card: #ffffff; /* Card Background */
+  --color-hover: #f1f5f9; /* Hover Background */
+  --color-table-head: #f2f6fa; /* Table Header Background */
+  --color-input: #ffffff; /* Input Background */
+  --color-sidebar: #ffffff; /* Sidebar Background */
+  --color-popup: #ffffff; /* Popup Background */
+
+  /* --------------------------------------------------------------- BORDER */
+  --color-border: #e6edf3; /* Border Light */
+  --color-border-strong: #d5dfe9; /* Border Medium */
+  --color-border-strongest: #b9c7d6; /* Border Strong */
+  --color-divider: #eaf0f5; /* Divider */
+  --color-border-hover: #b7c6d6; /* Hover Border */
+  --color-border-focus: var(--color-primary-500); /* Focus Border */
+  --color-border-disabled: #e9eef3; /* Disabled Border */
+
+  /* ----------------------------------------------------------------- TEXT */
+  --color-ink: #0f1e2e; /* Text Primary (bukan hitam murni) */
+  --color-ink-muted: #47576b; /* Text Secondary */
+  --color-ink-soft: #7a8c9e; /* Text Muted / caption */
+  --color-ink-onaccent: #ffffff; /* Text on Primary */
+
+  /* ------------------------------------------------------- TIPOGRAFI (Inter) */
+  --font-sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  /* -------------------------------------------------------------- RADIUS */
+  --radius-card: 18px;
+
+  /* ------------------------------------------------------------- SHADOW */
+  --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-raised: 0 6px 18px -6px rgba(15, 23, 42, 0.12);
+  --shadow-pop: 0 12px 32px -10px rgba(15, 23, 42, 0.22);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-canvas);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 14px; /* Body — 14 / Medium */
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Permukaan kartu standar — radius 18px, border tipis, bayangan lembut. */
+@utility card-surface {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* Angka metrik besar (48 / ExtraBold) dengan tabular-nums. */
+@utility kpi-number {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Accent Gradient (opsional) — untuk progress/CTA yang ingin lebih hidup. */
+@utility accent-gradient {
+  background-image: linear-gradient(90deg, var(--color-accent-500), var(--color-accent-400));
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.recharts-surface:focus,
+.recharts-wrapper:focus {
+  outline: none;
+}

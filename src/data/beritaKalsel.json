@@ -1,0 +1,559 @@
+[
+  {
+    "tanggal": "2026-10-21",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Peringatan Hari Jadi Kalsel di Batulicin",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Peringatan Hari Jadi Kalsel di Batulicin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Ekonomi, Keuangan & Industri"
+  },
+  {
+    "tanggal": "2026-10-10",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Digitalisasi Layanan Publik",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Digitalisasi Layanan Publik. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Kependudukan"
+  },
+  {
+    "tanggal": "2026-10-26",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Penanggulangan Banjir",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Penanggulangan Banjir. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Administrasi & Pemerintahan"
+  },
+  {
+    "tanggal": "2026-11-22",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Vaksinasi Massal",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Vaksinasi Massal. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Sosial, Budaya & Pariwisata",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-10-28",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Peringatan Hari Jadi Kalsel di Rantau",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Peringatan Hari Jadi Kalsel di Rantau. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Pemilu & Politik Praktis",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-10-22",
+    "judul": "[CONTOH] Pemkab Martapura dan Pemprov Kalsel Bahas Pelestarian Sungai Martapura",
+    "isi": "[CONTOH] Pemkab Martapura dan Pemprov Kalsel Bahas Pelestarian Sungai Martapura. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Kebencanaan",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-11-10",
+    "judul": "[CONTOH] Pemkab Barabai dan Pemprov Kalsel Bahas Bantuan UMKM",
+    "isi": "[CONTOH] Pemkab Barabai dan Pemprov Kalsel Bahas Bantuan UMKM. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Politik & Kebijakan",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-10-20",
+    "judul": "[CONTOH] Warga Pelaihari Keluhkan Harga Karet Anjlok",
+    "isi": "[CONTOH] Warga Pelaihari Keluhkan Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Kesehatan",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-10-15",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kekeringan Lahan Gambut di Tanjung",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kekeringan Lahan Gambut di Tanjung. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh B",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Ekonomi, Keuangan & Industri",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-10-12",
+    "judul": "[CONTOH] Warga Rantau Keluhkan Harga Karet Anjlok",
+    "isi": "[CONTOH] Warga Rantau Keluhkan Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Pertahanan & Ideologi"
+  },
+  {
+    "tanggal": "2026-10-24",
+    "judul": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Jalan Rusak",
+    "isi": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Jalan Rusak. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Hukum & HAM"
+  },
+  {
+    "tanggal": "2026-11-10",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Beasiswa Pendidikan",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Beasiswa Pendidikan. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh B",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Pendidikan & IPTEK"
+  },
+  {
+    "tanggal": "2026-10-13",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan Bendungan Riam Kanan di Rantau",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan Bendungan Riam Kanan di Rantau. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Pembangunan Desa"
+  },
+  {
+    "tanggal": "2026-11-17",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Banjir Tahunan di Banjarbaru",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Banjir Tahunan di Banjarbaru. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Energi, SDA & Lingkungan"
+  },
+  {
+    "tanggal": "2026-11-23",
+    "judul": "[CONTOH] Pemkab Kotabaru dan Pemprov Kalsel Bahas Digitalisasi Layanan Publik",
+    "isi": "[CONTOH] Pemkab Kotabaru dan Pemprov Kalsel Bahas Digitalisasi Layanan Publik. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Kesehatan"
+  },
+  {
+    "tanggal": "2026-11-15",
+    "judul": "[CONTOH] Dinas Kesehatan Kalsel Tangani Keluhan Warga soal Banjir Tahunan",
+    "isi": "[CONTOH] Dinas Kesehatan Kalsel Tangani Keluhan Warga soal Banjir Tahunan. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Sosial, Budaya & Pariwisata",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-10-21",
+    "judul": "[CONTOH] Dinas Perhubungan Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut",
+    "isi": "[CONTOH] Dinas Perhubungan Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pendidikan & IPTEK",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-11-10",
+    "judul": "[CONTOH] Warga Batulicin Keluhkan Kekeringan Lahan Gambut",
+    "isi": "[CONTOH] Warga Batulicin Keluhkan Kekeringan Lahan Gambut. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pendidikan & IPTEK"
+  },
+  {
+    "tanggal": "2026-11-24",
+    "judul": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut",
+    "isi": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Administrasi & Pemerintahan"
+  },
+  {
+    "tanggal": "2026-11-01",
+    "judul": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Kemacetan Lalu Lintas",
+    "isi": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Kemacetan Lalu Lintas. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Energi, SDA & Lingkungan"
+  },
+  {
+    "tanggal": "2026-10-21",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Banjarmasin",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Banjarmasin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh B",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Ketenagakerjaan"
+  },
+  {
+    "tanggal": "2026-11-13",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Bantuan UMKM",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Bantuan UMKM. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Sosial, Budaya & Pariwisata",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-11-07",
+    "judul": "[CONTOH] Dinas Sosial Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut",
+    "isi": "[CONTOH] Dinas Sosial Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Sosial, Budaya & Pariwisata"
+  },
+  {
+    "tanggal": "2026-10-29",
+    "judul": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Banjir Tahunan",
+    "isi": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Banjir Tahunan. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Ketenagakerjaan"
+  },
+  {
+    "tanggal": "2026-11-05",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan RSUD Baru di Amuntai",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan RSUD Baru di Amuntai. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Kebencanaan"
+  },
+  {
+    "tanggal": "2026-10-28",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Harga Karet Anjlok di Batulicin",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Harga Karet Anjlok di Batulicin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Kesehatan"
+  },
+  {
+    "tanggal": "2026-10-28",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Jalan Rusak di Amuntai",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Jalan Rusak di Amuntai. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Agro-Maritim"
+  },
+  {
+    "tanggal": "2026-11-23",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kemacetan Lalu Lintas di Pelaihari",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kemacetan Lalu Lintas di Pelaihari. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Perhubungan"
+  },
+  {
+    "tanggal": "2026-10-14",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Rapat Forkopimda di Batulicin",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Rapat Forkopimda di Batulicin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pendidikan & IPTEK",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-10-20",
+    "judul": "[CONTOH] Pemkab Banjarmasin dan Pemprov Kalsel Bahas Bantuan UMKM",
+    "isi": "[CONTOH] Pemkab Banjarmasin dan Pemprov Kalsel Bahas Bantuan UMKM. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pendidikan & IPTEK",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-11-14",
+    "judul": "[CONTOH] Warga Rantau Keluhkan Harga Karet Anjlok",
+    "isi": "[CONTOH] Warga Rantau Keluhkan Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pendidikan & IPTEK"
+  },
+  {
+    "tanggal": "2026-10-31",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Musrenbang Provinsi di Martapura",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan Hadiri Musrenbang Provinsi di Martapura. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Koperasi & UMKM"
+  },
+  {
+    "tanggal": "2026-11-01",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Rantau",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Rantau. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Ekonomi, Keuangan & Industri",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-11-09",
+    "judul": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Harga Karet Anjlok",
+    "isi": "[CONTOH] Dinas Pekerjaan Umum Kalsel Tangani Keluhan Warga soal Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Politik & Kebijakan"
+  },
+  {
+    "tanggal": "2026-10-14",
+    "judul": "[CONTOH] Dinas Kesehatan Kalsel Tangani Keluhan Warga soal Harga Karet Anjlok",
+    "isi": "[CONTOH] Dinas Kesehatan Kalsel Tangani Keluhan Warga soal Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh B",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Koperasi & UMKM"
+  },
+  {
+    "tanggal": "2026-10-31",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Kotabaru",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Kotabaru. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Ekonomi, Keuangan & Industri"
+  },
+  {
+    "tanggal": "2026-11-24",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Harga Karet Anjlok di Banjarmasin",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Harga Karet Anjlok di Banjarmasin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pemilu & Politik Praktis"
+  },
+  {
+    "tanggal": "2026-11-11",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Penanggulangan Banjir",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Penanggulangan Banjir. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Administrasi & Pemerintahan"
+  },
+  {
+    "tanggal": "2026-10-30",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Pelestarian Sungai Martapura",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Pelestarian Sungai Martapura. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Agro-Maritim"
+  },
+  {
+    "tanggal": "2026-11-18",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Batulicin",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Batulicin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Infrastruktur"
+  },
+  {
+    "tanggal": "2026-11-08",
+    "judul": "[CONTOH] Warga Batulicin Keluhkan Kemacetan Lalu Lintas",
+    "isi": "[CONTOH] Warga Batulicin Keluhkan Kemacetan Lalu Lintas. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Kesehatan"
+  },
+  {
+    "tanggal": "2026-11-06",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Tanjung",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Tanjung. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Kebencanaan"
+  },
+  {
+    "tanggal": "2026-11-17",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Bantuan UMKM",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Bantuan UMKM. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Kebencanaan"
+  },
+  {
+    "tanggal": "2026-10-12",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Martapura",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kelangkaan Pupuk di Martapura. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Ekonomi, Keuangan & Industri"
+  },
+  {
+    "tanggal": "2026-10-12",
+    "judul": "[CONTOH] Dinas Sosial Kalsel Tangani Keluhan Warga soal Harga Karet Anjlok",
+    "isi": "[CONTOH] Dinas Sosial Kalsel Tangani Keluhan Warga soal Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Ketenagakerjaan"
+  },
+  {
+    "tanggal": "2026-11-14",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Bantuan UMKM",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Bantuan UMKM. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh B",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Agraria dan Tata Ruang"
+  },
+  {
+    "tanggal": "2026-10-23",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan Jalan Lingkar di Amuntai",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan Jalan Lingkar di Amuntai. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Pemuda & Olahraga"
+  },
+  {
+    "tanggal": "2026-10-18",
+    "judul": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Beasiswa Pendidikan",
+    "isi": "[CONTOH] Pemprov Kalimantan Selatan Luncurkan Program Beasiswa Pendidikan. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh B",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Pembangunan Desa",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-10-24",
+    "judul": "[CONTOH] Pemkab Amuntai dan Pemprov Kalsel Bahas Digitalisasi Layanan Publik",
+    "isi": "[CONTOH] Pemkab Amuntai dan Pemprov Kalsel Bahas Digitalisasi Layanan Publik. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Agraria dan Tata Ruang",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-11-01",
+    "judul": "[CONTOH] Warga Banjarbaru Keluhkan Harga Karet Anjlok",
+    "isi": "[CONTOH] Warga Banjarbaru Keluhkan Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Administrasi & Pemerintahan",
+    "entitasTerkait": "Wakil Gubernur"
+  },
+  {
+    "tanggal": "2026-10-16",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Kemacetan Lalu Lintas di Martapura",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Kemacetan Lalu Lintas di Martapura. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Politik & Kebijakan"
+  },
+  {
+    "tanggal": "2026-10-31",
+    "judul": "[CONTOH] Wakil Gubernur Hasnuryadi Sulaiman Tinjau Jalan Lingkar di Rantau",
+    "isi": "[CONTOH] Wakil Gubernur Hasnuryadi Sulaiman Tinjau Jalan Lingkar di Rantau. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pemilu & Politik Praktis"
+  },
+  {
+    "tanggal": "2026-11-17",
+    "judul": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan Bendungan Riam Kanan di Batulicin",
+    "isi": "[CONTOH] Gubernur Kalimantan Selatan H. Muhidin Resmikan Bendungan Riam Kanan di Batulicin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pemuda & Olahraga"
+  },
+  {
+    "tanggal": "2026-10-12",
+    "judul": "[CONTOH] Wakil Gubernur Hasnuryadi Sulaiman Tinjau Pelabuhan Trisakti di Banjarmasin",
+    "isi": "[CONTOH] Wakil Gubernur Hasnuryadi Sulaiman Tinjau Pelabuhan Trisakti di Banjarmasin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Pembangunan Desa"
+  },
+  {
+    "tanggal": "2026-11-01",
+    "judul": "[CONTOH] Warga Martapura Keluhkan Harga Karet Anjlok",
+    "isi": "[CONTOH] Warga Martapura Keluhkan Harga Karet Anjlok. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Pemberdayaan Perempuan & Perlindungan Anak",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-10-11",
+    "judul": "[CONTOH] Dinas Lingkungan Hidup Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut",
+    "isi": "[CONTOH] Dinas Lingkungan Hidup Kalsel Tangani Keluhan Warga soal Kekeringan Lahan Gambut. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh E",
+    "sentimen": "Positif",
+    "url": "#",
+    "kategori": "Energi, SDA & Lingkungan"
+  },
+  {
+    "tanggal": "2026-10-14",
+    "judul": "[CONTOH] DPRD Kalimantan Selatan Soroti Jalan Rusak di Batulicin",
+    "isi": "[CONTOH] DPRD Kalimantan Selatan Soroti Jalan Rusak di Batulicin. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh F",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Agro-Maritim",
+    "entitasTerkait": "Gubernur"
+  },
+  {
+    "tanggal": "2026-10-14",
+    "judul": "[CONTOH] Pemkab Batulicin dan Pemprov Kalsel Bahas Vaksinasi Massal",
+    "isi": "[CONTOH] Pemkab Batulicin dan Pemprov Kalsel Bahas Vaksinasi Massal. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh A",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Kesehatan"
+  },
+  {
+    "tanggal": "2026-11-23",
+    "judul": "[CONTOH] Wakil Gubernur Hasnuryadi Sulaiman Tinjau Bendungan Riam Kanan di Pelaihari",
+    "isi": "[CONTOH] Wakil Gubernur Hasnuryadi Sulaiman Tinjau Bendungan Riam Kanan di Pelaihari. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh C",
+    "sentimen": "Negatif",
+    "url": "#",
+    "kategori": "Hukum & HAM"
+  },
+  {
+    "tanggal": "2026-11-16",
+    "judul": "[CONTOH] Pemkab Kotabaru dan Pemprov Kalsel Bahas Vaksinasi Massal",
+    "isi": "[CONTOH] Pemkab Kotabaru dan Pemprov Kalsel Bahas Vaksinasi Massal. Ini adalah isi berita contoh (placeholder) untuk keperluan demo tampilan dashboard, bukan berita riil.",
+    "sumber": "Media Contoh D",
+    "sentimen": "Netral",
+    "url": "#",
+    "kategori": "Pembangunan Desa"
+  }
+]

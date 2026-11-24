@@ -1,0 +1,339 @@
+"""Importer: baca file Excel IMD News/Socmed Papua di folder repo lalu tulis
+   src/data/beritaPapua.json dalam skema BeritaMentah dashboard.
+
+   - Kolom input News: Tanggal, Judul, Isi, Sentimen, Media, Narasumber, Link
+   - Kolom input Socmed: Tanggal, Jam, Username, Isi, Sentimen, Platform, ..., Link
+   - Output: [{tanggal, judul, sumber, sentimen, url, kategori, entitasTerkait?}]
+   Jalankan: python scripts/importExcel.py
+
+   Aturan klasifikasi dibaca dari scripts/klasifikasi.json — edit di sana
+   tanpa menyentuh kode Python ini.
+"""
+from __future__ import annotations
+
+import glob
+import json
+import os
+import re
+import sys
+from collections import Counter
+
+try:
+    from openpyxl import load_workbook
+except ImportError:
+    print("openpyxl belum terpasang: pip install openpyxl", file=sys.stderr)
+    sys.exit(1)
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+OUT = os.path.join(ROOT, "src", "data", "beritaPapua.json")
+
+# ── Muat config klasifikasi ──────────────────────────────────────────────────
+_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "klasifikasi.json")
+try:
+    with open(_CONFIG_PATH, encoding="utf-8") as _f:
+        _CFG = json.load(_f)
+    print(f"Config klasifikasi dimuat dari: {_CONFIG_PATH}")
+except FileNotFoundError:
+    _CFG = {}
+    print("PERINGATAN: klasifikasi.json tidak ditemukan, aturan override dinonaktifkan.", file=sys.stderr)
+
+def _kata_kunci(bagian: str, kunci: str) -> list[str]:
+    return _CFG.get(bagian, {}).get(kunci, {}).get("kata_kunci", [])
+
+SENTIMEN_OVERRIDE_NEG  = [k.lower() for k in _kata_kunci("sentimen_override", "Negatif")]
+SENTIMEN_OVERRIDE_PNEG = [k.lower() for k in _kata_kunci("sentimen_override", "Potensi Negatif")]
+SENTIMEN_OVERRIDE_POS  = [k.lower() for k in _kata_kunci("sentimen_override", "Positif")]
+
+FRAMING_KEYS: dict[str, list[str]] = {
+    name: [k.lower() for k in data.get("kata_kunci", [])]
+    for name, data in _CFG.get("framing_kinerja", {}).items()
+    if not name.startswith("_")
+}
+
+_FILTER = _CFG.get("filter_abaikan", {})
+KATA_ABAIKAN   = [k.lower() for k in _FILTER.get("mengandung_kata", [])]
+MIN_JUDUL_LEN  = int(_FILTER.get("panjang_judul_minimum_karakter", 20))
+
+_BATAS = _CFG.get("batasan_relevansi", {})
+ABAIKAN_WILAYAH = [k.lower() for k in _BATAS.get("abaikan_jika_hanya_menyebut", [])]
+
+SENTIMEN_MAP = {"positive": "Positif", "neutral": "Netral", "negative": "Negatif"}
+
+KATEGORI = [
+    "Pelayanan Publik",
+    "Infrastruktur",
+    "Pendidikan",
+    "Kesehatan",
+    "Ekonomi & Ketahanan Pangan",
+    "Pariwisata",
+    "Lingkungan & Bencana",
+    "Sosial & Kemiskinan",
+    "Keamanan & Ketertiban",
+    "Tata Kelola Pemerintahan",
+]
+
+# Kata kunci untuk klasifikasi kategori (urutan: yang lebih spesifik dulu).
+KAT_KEYS: list[tuple[str, list[str]]] = [
+    ("Kesehatan", ["puskesmas", "rumah sakit", "rsud", "stunting", "imunisasi", "dokter", "pasien", "kesehatan", "wabah", "malaria", "gizi"]),
+    ("Pendidikan", ["sekolah", "siswa", "guru", "pendidikan", "kampus", "universitas", "kurikulum", "beasiswa", "pelajar"]),
+    ("Infrastruktur", ["jalan", "jembatan", "bandara", "pelabuhan", "proyek", "pembangunan", "trans papua", "infrastruktur", "konstruksi", "aspal"]),
+    ("Pariwisata", ["wisata", "pariwisata", "destinasi", "turis", "budaya papua", "festival"]),
+    ("Lingkungan & Bencana", ["banjir", "longsor", "gempa", "cuaca", "bencana", "lingkungan", "hutan", "tambang", "polusi", "deforestasi", "kebakaran", "erupsi"]),
+    ("Keamanan & Ketertiban", ["opm", "kkb", "keamanan", "tni", "polri", "tnp", "penembakan", "tersangka", "narkoba", "konflik", "demonstrasi", "ricuh", "kriminal", "pencurian", "kejahatan", "penangkapan"]),
+    ("Sosial & Kemiskinan", ["bantuan sosial", "bansos", "kemiskinan", "pengangguran", "stunt", "penyandang disabilitas", "miskin", "pengungsi"]),
+    ("Ekonomi & Ketahanan Pangan", ["ekonomi", "harga", "pangan", "beras", "bbm", "inflasi", "pertanian", "nelayan", "umkm", "perdagangan", "logistik", "pasar"]),
+    ("Pelayanan Publik", ["layanan", "ktp", "dukcapil", "kependudukan", "antre", "pelayanan", "perizinan"]),
+    ("Tata Kelola Pemerintahan", ["gubernur", "wakil gubernur", "bupati", "wali kota", "pemprov", "pemkab", "pemkot", "apbd", "anggaran", "korupsi", "kpk", "birokrasi", "dpr", "dprd", "pemilu", "pilkada"]),
+]
+
+GUB = "Matius D. Fakhiri"
+WAGUB = "Aryoko Rumaropen"
+GUB_KEYS = ["matius d. fakhiri", "matius fakhiri", "mathius d. fakhiri", "mathius fakhiri", "gubernur papua"]
+WAGUB_KEYS = ["aryoko rumaropen", "wakil gubernur papua", "wagub papua"]
+
+MAX_JUDUL = 200
+# Potongan awal Isi yang disimpan — cukup untuk clustering kemiripan topik,
+# tidak perlu isi lengkap (menjaga ukuran JSON dashboard tetap kecil).
+MAX_ISI = 240
+# Batas target total baris untuk menjaga ukuran JSON dashboard.
+TARGET_ROWS = 4000
+
+
+def strip_html(s: str) -> str:
+    s = re.sub(r"<[^>]+>", " ", s or "")
+    s = re.sub(r"\s+", " ", s)
+    return s.strip()
+
+
+def klasifikasi_kategori(judul: str, narasumber: str) -> str:
+    teks = f"{judul} {narasumber}".lower()
+    for kat, keys in KAT_KEYS:
+        for k in keys:
+            if k in teks:
+                return kat
+    return "Tata Kelola Pemerintahan"
+
+
+def entitas_terkait(judul: str, narasumber: str, default: str | None) -> str | None:
+    teks = f"{judul} {narasumber}".lower()
+    for k in WAGUB_KEYS:
+        if k in teks:
+            return "Wakil Gubernur"
+    for k in GUB_KEYS:
+        if k in teks:
+            return "Gubernur"
+    return default
+
+
+def parse_tanggal(v) -> str | None:
+    if v is None:
+        return None
+    s = str(v)[:10]
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", s):
+        return s
+    return None
+
+
+def parse_sentimen(v) -> str:
+    return SENTIMEN_MAP.get(str(v).strip().lower(), "Netral")
+
+
+def override_sentimen(judul: str, sentimen_asal: str) -> str:
+    """Terapkan aturan glosarium: cek kata kunci negatif/positif di judul."""
+    teks = judul.lower()
+    for k in SENTIMEN_OVERRIDE_NEG:
+        if k in teks:
+            return "Negatif"
+    for k in SENTIMEN_OVERRIDE_PNEG:
+        if k in teks:
+            return "Negatif"  # Potensi Negatif → Negatif di skema dashboard
+    for k in SENTIMEN_OVERRIDE_POS:
+        if k in teks:
+            return "Positif"
+    return sentimen_asal
+
+
+def deteksi_framing(judul: str) -> str | None:
+    """Deteksi framing kinerja pemda: Respons, Sosialisasi, atau Seremoni."""
+    teks = judul.lower()
+    for nama, keys in FRAMING_KEYS.items():
+        for k in keys:
+            if k in teks:
+                return nama
+    return None
+
+
+def lolos_filter(judul: str) -> bool:
+    """True jika berita layak dimasukkan berdasarkan aturan filter_abaikan."""
+    if len(judul) < MIN_JUDUL_LEN:
+        return False
+    teks = judul.lower()
+    for k in KATA_ABAIKAN:
+        if k in teks:
+            return False
+    # Abaikan jika hanya menyebut wilayah lain tanpa kata 'papua'
+    if ABAIKAN_WILAYAH and "papua" not in teks:
+        for w in ABAIKAN_WILAYAH:
+            if w in teks:
+                return False
+    return True
+
+
+def iter_rows(path: str, is_socmed: bool, forced_entitas: str | None):
+    wb = load_workbook(path, read_only=True, data_only=True)
+    ws = wb[wb.sheetnames[0]]
+    rows = ws.iter_rows(values_only=True)
+    header = next(rows, None)
+    if not header:
+        return
+    # idx dibangun dua versi: asli (untuk kolom baku IMD) dan lowercase (untuk kolom kurasi AI)
+    idx = {str(h).strip(): i for i, h in enumerate(header) if h is not None}
+    idx_lower = {str(h).strip().lower(): i for i, h in enumerate(header) if h is not None}
+    # Field posisi
+    i_tgl = idx.get("Tanggal")
+    # Untuk socmed, pakai Isi sebagai teks "judul" (socmed tidak punya kolom Judul).
+    i_judul = idx.get("Judul") if "Judul" in idx else idx.get("Isi")
+    # Potongan awal Isi dipakai untuk clustering isu (judul+isi) — hanya relevan untuk
+    # berita News (yang punya Judul terpisah dari Isi); untuk socmed, Isi == judul, jadi
+    # tidak perlu disimpan dobel.
+    i_isi = idx.get("Isi") if "Judul" in idx else None
+    i_sentimen = idx.get("Sentimen")
+    i_media = idx.get("Media") if "Media" in idx else idx.get("Platform")
+    i_nara = idx.get("Narasumber") if "Narasumber" in idx else idx.get("Username")
+    i_link = idx.get("Link")
+    for r in rows:
+        try:
+            tgl = parse_tanggal(r[i_tgl]) if i_tgl is not None else None
+            if not tgl:
+                continue
+            judul = strip_html(str(r[i_judul] or "") if i_judul is not None else "")[:MAX_JUDUL]
+            if not judul or not lolos_filter(judul):
+                continue
+            sumber_raw = str(r[i_media] or "").strip() if i_media is not None else ""
+            if not sumber_raw:
+                sumber_raw = "Socmed" if is_socmed else "Media"
+            # Normalisasi nama platform socmed
+            if is_socmed:
+                sumber = sumber_raw.title()
+            else:
+                sumber = sumber_raw
+            narasumber = str(r[i_nara] or "") if i_nara is not None else ""
+            isi_potongan = strip_html(str(r[i_isi] or ""))[:MAX_ISI] if i_isi is not None else ""
+            sentimen_asal = parse_sentimen(r[i_sentimen]) if i_sentimen is not None else "Netral"
+            sentimen = override_sentimen(judul, sentimen_asal)
+            url = str(r[i_link] or "").strip() if i_link is not None else ""
+            kategori = klasifikasi_kategori(judul, narasumber)
+            ent = entitas_terkait(judul, narasumber, forced_entitas)
+            framing = deteksi_framing(judul)
+            out = {
+                "tanggal": tgl,
+                "judul": judul,
+                "sumber": sumber or "Tidak diketahui",
+                "sentimen": sentimen,
+                "url": url or "#",
+                "kategori": kategori,
+            }
+            if isi_potongan:
+                out["isi"] = isi_potongan
+            if ent:
+                out["entitasTerkait"] = ent
+            if framing:
+                out["framing_kinerja"] = framing
+
+            # ── Kolom kurasi AI (hanya ada di file _KURASI.xlsx) ──────────────
+            # Gunakan idx_lower agar tidak sensitif terhadap huruf kapital header.
+            for col_name, out_key in [
+                ("sentimen_kurasi",    "sentimen_kurasi"),
+                ("klasifikasi",        "klasifikasi"),
+                ("framing_kinerja",    "framing_kinerja"),
+                ("narasumber_jabatan", "narasumber_jabatan"),
+                ("status_duplikasi",   "status_duplikasi"),
+                ("alasan_kurasi",      "alasan_kurasi"),
+            ]:
+                col_i = idx_lower.get(col_name)
+                if col_i is not None:
+                    val = str(r[col_i] or "").strip()
+                    if val:
+                        out[out_key] = val
+
+            yield out
+        except Exception:
+            continue
+    wb.close()
+
+
+def main():
+    # Urutan: file Gubernur & Wakil Gubernur DULU supaya entitasTerkait tidak
+    # ditiban oleh pembacaan file Papua umum (URL sering sama persis).
+    sumber_files = [
+        ("IMD News Isu - All Data - Gubernur Papua - 16102026 - 14112026.xlsx", False, "Gubernur"),
+        ("IMD News Isu - All Data - Wakil Gubernur Papua - 16102026 - 14112026.xlsx", False, "Wakil Gubernur"),
+        ("IMD News Isu - All Data - Papua - 16102026 - 14112026.xlsx", False, None),
+        ("IMD Socmed Isu - All Data - Papua - 16102026 - 14112026.xlsx", True, None),
+    ]
+    rows_news: list[dict] = []
+    rows_socmed: list[dict] = []
+    seen_urls: set[str] = set()
+    for fname, is_socmed, forced in sumber_files:
+        p = os.path.join(ROOT, fname)
+        if not os.path.exists(p):
+            matches = glob.glob(os.path.join(ROOT, fname.replace(" - 16102026 - 14112026", " - *")))
+            if matches:
+                p = matches[0]
+            else:
+                print(f"SKIP (tidak ketemu): {fname}", file=sys.stderr)
+                continue
+        bucket = rows_socmed if is_socmed else rows_news
+        n_before = len(bucket)
+        for row in iter_rows(p, is_socmed, forced):
+            key = row["url"]
+            if key and key != "#" and key in seen_urls:
+                continue
+            if key and key != "#":
+                seen_urls.add(key)
+            bucket.append(row)
+        print(f"{os.path.basename(p)}: +{len(bucket) - n_before} baris")
+
+    # Alokasi target: 85% news + 15% socmed, selalu simpan SEMUA baris dengan
+    # entitasTerkait (Gubernur/Wakil Gubernur) supaya halaman pimpinan ada datanya.
+    target_news = int(TARGET_ROWS * 0.85)
+    target_socmed = TARGET_ROWS - target_news
+
+    def sampling_rata(baris: list[dict], target: int) -> list[dict]:
+        baris.sort(key=lambda r: r["tanggal"], reverse=True)
+        if len(baris) <= target:
+            return baris
+        wajib = [r for r in baris if r.get("entitasTerkait")]
+        sisa = [r for r in baris if not r.get("entitasTerkait")]
+        slot_sisa = max(0, target - len(wajib))
+        if slot_sisa <= 0 or not sisa:
+            return (wajib + sisa)[:target]
+        step = len(sisa) / slot_sisa
+        kept, i = [], 0.0
+        while int(i) < len(sisa) and len(kept) < slot_sisa:
+            kept.append(sisa[int(i)])
+            i += step
+        return wajib + kept
+
+    rows_news = sampling_rata(rows_news, target_news)
+    rows_socmed = sampling_rata(rows_socmed, target_socmed)
+    all_rows = rows_news + rows_socmed
+    all_rows.sort(key=lambda r: r["tanggal"], reverse=True)
+
+    cats = Counter(r["kategori"] for r in all_rows)
+    ents = Counter(r.get("entitasTerkait", "-") for r in all_rows)
+    sents = Counter(r["sentimen"] for r in all_rows)
+    framings = Counter(r.get("framing", "-") for r in all_rows)
+    print(f"total ditulis: {len(all_rows)}")
+    print(f"kategori: {dict(cats)}")
+    print(f"entitas: {dict(ents)}")
+    print(f"sentimen: {dict(sents)}")
+    print(f"framing: {dict(framings)}")
+
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump(all_rows, f, ensure_ascii=False, separators=(",", ":"))
+    print(f"ditulis ke: {OUT} ({os.path.getsize(OUT)/1024:.1f} KB)")
+
+
+if __name__ == "__main__":
+    main()
